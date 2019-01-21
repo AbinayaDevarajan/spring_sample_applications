@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean 
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+
+		<property name="location">
+			<value>filter.properties</value>
+		</property>
+	</bean>
+	
+	<bean id="entity" class="com.springexample.SampleEntity">
+		<property name="serialNo" value="1" />
+		<property name="entityName" value="C" />
+	</bean>
+	
+	
+	<bean id="entity0" class="com.springexample.SampleEntity">
+		<property name="serialNo" value="1001" />
+		<property name="entityName" value="Laptop" />
+	</bean>
+	
+	
+	<bean id="entity1" class="com.springexample.SampleEntity">
+		<property name="serialNo" value="10009" />
+		<property name="entityName" value="\\Ericsson\@eabinay" />
+		<property name="logContent" value="[WARNING]:this is a test      " />
+	</bean>
+	
+	
+	<bean id="regexValidator" class="com.springexample.RegexValidator">
+		<property name="entityNoValid" value="#{entity.serialNo matches '[0-9]'}" />
+		<property name="entityNameValid" value="#{entity.entityName matches '[A-Za-z]'}" />
+	</bean>
+	
+	
+	<bean id="regexValidator1" class="com.springexample.RegexValidator">
+		<property name="entityNoValid" value="#{entity1.serialNo matches '[0-9]'}" />
+		<property name="entityNameValid" value="#{entity1.entityName matches '\\\\Ericsson\\@[A-z]+'}" />
+	</bean>
+	
+	<bean id="entityLogFilter1" class="com.springexample.LogFilter">
+	
+		<property name="filterProperty" value ="${filterWithTrailingSpace} "/>
+		
+	
+	</bean>
+	
+	<bean id="entityLogFilterExample" class="com.springexample.LogFilter">
+		<property name="logFilter" value="#{entity1.logContent matches entityLogFilter1.filterProperty }" />
+	</bean>
+	
+	
+	<bean id="entity2" class="com.springexample.SampleEntity">
+		<property name="serialNo" value="10009" />
+		<property name="entityName" value="\\Ericsson\@eruekru" />
+		<property name="logContent" value="[WARNING]:this is a test" />
+	</bean>
+	
+	
+	<bean id="entityLogFilter2" class="com.springexample.LogFilter">	
+		<property name="logFilter" value="#{entity2.logContent matches '[WARNING]:this is a test\s+'}" />
+	</bean>
+	
+	
+
+</beans>
