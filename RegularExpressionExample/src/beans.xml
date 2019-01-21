@@ -25,7 +25,7 @@
 	
 	<bean id="entity1" class="com.springexample.SampleEntity">
 		<property name="serialNo" value="10009" />
-		<property name="entityName" value="\\Ericsson\@eabinay" />
+		<property name="entityName" value="\\rewiruwiu\rwoiuwuow" />
 		<property name="logContent" value="[WARNING]:this is a test      " />
 	</bean>
 	
@@ -55,7 +55,7 @@
 	
 	<bean id="entity2" class="com.springexample.SampleEntity">
 		<property name="serialNo" value="10009" />
-		<property name="entityName" value="\\Ericsson\@eruekru" />
+		<property name="entityName" value="\\539895384\38987493_0" />
 		<property name="logContent" value="[WARNING]:this is a test" />
 	</bean>
 	
